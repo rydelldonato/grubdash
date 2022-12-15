@@ -103,42 +103,10 @@ function read(req, res, next) {
   res.status(200).json({ data: foundDish });
 }
 function update(req, res, next) {
-  //   const { dishId } = req.params;
-  //   const { data: { name, description, image_url, price } = {} } = req.body;
-  // //   if(typeof price !== 'number'){
-  // //     return next({status: 400})
-  // //   }
-  //   let foundDish = dishes.find((dish) => dish.id === dishId);
-  //   if (foundDish === undefined) {
-  //     return next({ status: 404, message: `Dish does not exist: ${dishId}` });
-  //   }
-  //   if (dishId) {
-  //     if (foundDish.id !== dishId) {
-  //       return next({
-  //         status: 400,
-  //         message: `Dish id does not match route id. Dish: ${foundDish.id}, Route: ${dishId}`,
-  //       });
-  //     }
-  // }
-  //   foundDish.name = name;
-  //   foundDish.description = description;
-  //   foundDish.image_url = image_url;
-  //   foundDish.price = price;
-
-  //   res.status(200).json({ data: foundDish });
   const oldDishData = res.locals.dish;
   const newDishData = req.body.data;
   res.status(200).json({ data: { ...oldDishData, ...newDishData } });
 }
-// function destory(req, res, next) {
-//   const { dishId } = req.params;
-//   const dish = dishes.find((dish) => dish.id === dishId);
-//   if (dish) {
-//     res.locals.dish = dish;
-//     res.status(204)
-//   }
-//   res.status(404)
-// }
 module.exports = {
   list,
   create: [
@@ -158,5 +126,4 @@ module.exports = {
     hasPrice("price"),
     update,
   ],
-//   destory
 };
